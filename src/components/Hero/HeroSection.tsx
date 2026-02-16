@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { BookOpen } from "lucide-react";
+import { InfoIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/Button/Button";
 
 const AnnouncementBanner = styled.div`
@@ -9,24 +10,14 @@ const AnnouncementBanner = styled.div`
   right: 0;
   width: 100%;
   background-color: #d4ff9a;
-  padding: 0.75rem 2rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: #1a1a1a;
-  z-index: 50;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  line-height: 1;
-
-  svg {
-    flex-shrink: 0;
-  }
+  gap: 8px;
 
   @media (max-width: 768px) {
-    font-size: 0.875rem;
-    padding: 0.625rem 1rem;
+    font-size: 12px;
   }
 `;
 
@@ -50,16 +41,16 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 2rem 4rem;
-  gap: 4rem;
+  padding: 20px;
+  gap: 2px;
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
 
   @media (max-width: 1024px) {
     flex-direction: column-reverse;
-    padding: 2rem 2rem;
-    gap: 2rem;
+    padding: 20px;
+    gap: 32px;
   }
 `;
 
@@ -103,29 +94,27 @@ const ImageSection = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 64px;
   font-weight: 800;
   color: #154618;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   text-align: left;
-  line-height: 1.1;
 
   @media (max-width: 1024px) {
-    font-size: 3rem;
+    font-size: 48px;
     text-align: center;
   }
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 40px;
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.125rem;
+  font-size: 18px;
   color: #154618;
   text-align: left;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+  margin-bottom: 40px;
 
   @media (max-width: 1024px) {
     text-align: center;
@@ -133,11 +122,17 @@ const Subtitle = styled.p`
 `;
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate("/search");
+  };
+
   return (
     <>
       <AnnouncementBanner>
-        <BookOpen size={16} />
-        <span>New release! Book here...</span>
+        <InfoIcon size={16} />
+        <span>Click the search bar in the top right to begin searching.</span>
       </AnnouncementBanner>
       <StyledSection>
         <Container>
@@ -146,7 +141,7 @@ export const HeroSection = () => {
             <Subtitle>
               Discover new books and authors. Powered by OpenLibrary.
             </Subtitle>
-            <Button>Get started</Button>
+            <Button onClick={handleGetStarted}>Get started</Button>
           </ContentSection>
           <ImageSection>
             <img src="./heroImage.png" alt="TaxFix reading illustration" />

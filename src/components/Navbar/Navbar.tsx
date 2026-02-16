@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Logo } from "../Logo/Logo";
+import { Search } from "../Search/Search";
 
 const NavbarContainer = styled.nav`
   width: 100%;
@@ -7,15 +8,18 @@ const NavbarContainer = styled.nav`
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  padding: 1rem 4rem;
+  justify-content: space-between;
+  padding: 16px 64px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
+  gap: 32px;
+  isolation: isolate;
 
   @media (max-width: 768px) {
-    padding: 1rem 2rem;
+    padding: 16px 32px;
   }
 `;
 
@@ -36,6 +40,7 @@ export const Navbar = () => {
       <LogoWrapper>
         <Logo />
       </LogoWrapper>
+      <Search />
     </NavbarContainer>
   );
 };

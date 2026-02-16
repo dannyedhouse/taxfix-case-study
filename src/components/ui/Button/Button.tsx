@@ -10,11 +10,11 @@ const StyledButton = styled.button<{}>`
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+  gap: 16px;
+  padding: 8px 12px 8px 24px;
   background-color: "#ffffff";
   color: #1a1a1a;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 700;
   border: none;
   border-radius: 200px;
@@ -33,8 +33,8 @@ const StyledButton = styled.button<{}>`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9375rem;
-    padding: 0.5rem 0.625rem 0.5rem 1.25rem;
+    font-size: 15px;
+    padding: 8px 10px 8px 20px;
     min-height: 44px;
   }
 `;
