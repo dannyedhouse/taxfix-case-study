@@ -3,12 +3,13 @@ import { Skeleton } from "../ui/Skeleton/Skeleton";
 
 const SkeletonItem = styled.div`
   display: flex;
-  gap: 16px;
-  padding: 16px;
-  background-color: #ffffff;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-md);
 
   &:not(:last-child) {
-    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: var(--spacing-sm);
   }
 `;
 
@@ -16,22 +17,24 @@ const SkeletonContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-xs);
+  justify-content: space-between;
 `;
 
 const SkeletonList = styled.div`
   width: 100%;
-  padding: 8px;
+  padding: var(--spacing-xs);
 `;
 
 export const BookSkeleton = () => {
   return (
     <SkeletonItem>
-      <Skeleton width="60px" height="80px" />
+      <Skeleton width="80px" height="120px" borderRadius="4px" />
       <SkeletonContent>
-        <Skeleton width="70%" height="16px" />
+        <Skeleton width="70%" height="18px" />
+        <Skeleton width="60%" height="15px" />
         <Skeleton width="50%" height="14px" />
-        <Skeleton width="40%" height="12px" />
+        <Skeleton width="140px" height="36px" borderRadius="4px" />
       </SkeletonContent>
     </SkeletonItem>
   );

@@ -10,14 +10,14 @@ const StyledButton = styled.button<{}>`
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 8px 12px 8px 24px;
-  background-color: "#ffffff";
-  color: #1a1a1a;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm) var(--spacing-xs) var(--spacing-xl);
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
   font-size: 16px;
   font-weight: 700;
   border: none;
-  border-radius: 200px;
+  border-radius: var(--radius-full);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -34,7 +34,7 @@ const StyledButton = styled.button<{}>`
 
   @media (max-width: 768px) {
     font-size: 15px;
-    padding: 8px 10px 8px 20px;
+    padding: var(--spacing-xs) 10px var(--spacing-xs) var(--spacing-lg);
     min-height: 44px;
   }
 `;

@@ -9,12 +9,12 @@ const AnnouncementBanner = styled.div`
   left: 0;
   right: 0;
   width: 100%;
-  background-color: #d4ff9a;
-  padding: 12px;
+  background-color: var(--color-banner-green);
+  padding: var(--spacing-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--spacing-xs);
 
   @media (max-width: 768px) {
     font-size: 12px;
@@ -22,7 +22,7 @@ const AnnouncementBanner = styled.div`
 `;
 
 const StyledSection = styled.main`
-  background-color: #adee68;
+  background-color: var(--color-light-green);
   min-height: calc(100vh - 48px);
   display: flex;
   align-items: center;
@@ -96,8 +96,8 @@ const ImageSection = styled.div`
 const Title = styled.h1`
   font-size: 64px;
   font-weight: 800;
-  color: #154618;
-  margin-bottom: 24px;
+  color: var(--color-dark-green);
+  margin-bottom: var(--spacing-xl);
   text-align: left;
 
   @media (max-width: 1024px) {
@@ -112,9 +112,9 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   font-size: 18px;
-  color: #154618;
+  color: var(--color-dark-green);
   text-align: left;
-  margin-bottom: 40px;
+  margin-bottom: var(--spacing-3xl);
 
   @media (max-width: 1024px) {
     text-align: center;

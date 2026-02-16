@@ -4,14 +4,14 @@ import { Search, X } from "lucide-react";
 const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 12px;
-  padding: 12px 20px;
-  gap: 12px;
+  background-color: var(--color-bg-gray);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
   transition: background-color 0.2s ease;
 
   &:focus-within {
-    background-color: #ebebeb;
+    background-color: var(--color-bg-gray-hover);
   }
 `;
 
@@ -21,17 +21,17 @@ const SearchInput = styled.input`
   outline: none;
   background: transparent;
   font-size: 16px;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
 
   &::placeholder {
-    color: #999;
+    color: var(--color-text-placeholder);
   }
 `;
 
 const SearchIconWrapper = styled.div`
   display: flex;
   align-items: center;
-  color: #154618;
+  color: var(--color-dark-green);
   flex-shrink: 0;
   cursor: pointer;
   transition: color 0.2s ease;

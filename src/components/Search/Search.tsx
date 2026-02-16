@@ -15,11 +15,11 @@ const Overlay = styled.div`
 
 const DropdownContainer = styled.div`
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + var(--spacing-xs));
   left: 0;
   right: 0;
-  background-color: #ffffff;
-  border-radius: 8px;
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-md);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   max-height: 70vh;
   overflow-y: auto;
