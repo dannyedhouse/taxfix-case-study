@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BookOpen } from "lucide-react";
 import { Button } from "../ui/Button/Button";
 
 const AnnouncementBanner = styled.div`
@@ -9,11 +10,19 @@ const AnnouncementBanner = styled.div`
   width: 100%;
   background-color: #d4ff9a;
   padding: 0.75rem 2rem;
-  text-align: center;
   font-size: 0.9375rem;
   font-weight: 500;
   color: #1a1a1a;
   z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1;
+
+  svg {
+    flex-shrink: 0;
+  }
 
   @media (max-width: 768px) {
     font-size: 0.875rem;
@@ -126,7 +135,10 @@ const Subtitle = styled.p`
 export const HeroSection = () => {
   return (
     <>
-      <AnnouncementBanner>New release! Book here...</AnnouncementBanner>
+      <AnnouncementBanner>
+        <BookOpen size={16} />
+        <span>New release! Book here...</span>
+      </AnnouncementBanner>
       <StyledSection>
         <Container>
           <ContentSection>
