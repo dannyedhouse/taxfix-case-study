@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import { Navbar } from "./components/Navbar/Navbar";
-import { HomePage } from "./pages/HomePage/HomePage";
+import { BookDetailPage } from "./pages/BookDetailPage";
+import { HomePage } from "./pages/HomePage";
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/book/:workId" element={<BookDetailPage />} />
       </Routes>
     </AppContainer>
   );

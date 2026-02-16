@@ -9,7 +9,11 @@ const SkeletonItem = styled.div`
   border-radius: var(--radius-md);
 
   &:not(:last-child) {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 768px) {
+    gap: var(--spacing-sm);
   }
 `;
 
@@ -26,10 +30,17 @@ const SkeletonList = styled.div`
   padding: var(--spacing-xs);
 `;
 
+const CoverSkeleton = styled(Skeleton)`
+  @media (max-width: 768px) {
+    width: 60px !important;
+    height: 90px !important;
+  }
+`;
+
 export const BookSkeleton = () => {
   return (
     <SkeletonItem>
-      <Skeleton width="80px" height="120px" borderRadius="4px" />
+      <CoverSkeleton width="80px" height="120px" borderRadius="4px" />
       <SkeletonContent>
         <Skeleton width="70%" height="18px" />
         <Skeleton width="60%" height="15px" />

@@ -15,26 +15,22 @@ export const useSearch = () => {
 
   const shouldSearch = debouncedSearchValue.trim().length >= MIN_SEARCH_CHARS;
   const hasActiveQuery = searchQuery.trim().length >= MIN_SEARCH_CHARS;
-  // Close immediately when searchQuery is cleared, even if debounced value hasn't updated yet
   const showResults = shouldSearch && hasActiveQuery;
 
   const { data, isLoading, isFetching, isError } = useSearchBooksQuery(
     debouncedSearchValue.trim(),
     {
-      skip: !shouldSearch || !hasActiveQuery, // Skip if query is cleared
+      skip: !shouldSearch || !hasActiveQuery,
     }
   );
 
-  // Track when search query changes to show loading state
   useEffect(() => {
-    // Immediately clear searching state if query is empty
     if (searchQuery.trim().length === 0) {
       setIsSearching(false);
       return;
     }
     
     const hasMinChars = searchQuery.trim().length >= MIN_SEARCH_CHARS;
-    // Only show searching state if user is actively typing
     if (hasMinChars && shouldSearch && searchQuery !== debouncedSearchValue) {
       setIsSearching(true);
     } else {
@@ -42,7 +38,6 @@ export const useSearch = () => {
     }
   }, [searchQuery, debouncedSearchValue, shouldSearch]);
 
-  // Only show loading if we have an active query
   const showLoading = hasActiveQuery && (isLoading || isFetching || isSearching);
 
   const handleClose = () => {

@@ -141,7 +141,15 @@ export const HeroSection = () => {
             <Subtitle>
               Discover new books and authors. Powered by OpenLibrary.
             </Subtitle>
-            <Button onClick={handleGetStarted}>Get started</Button>
+            <a
+              href="https://taxfix.com/en-uk/"
+              no-referraltarget="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button onClick={() => navigate("taxfix.com")}>
+                Find out more
+              </Button>
+            </a>
           </ContentSection>
           <ImageSection>
             <img src="./heroImage.png" alt="TaxFix reading illustration" />

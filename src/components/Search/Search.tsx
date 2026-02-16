@@ -19,11 +19,28 @@ const DropdownContainer = styled.div`
   left: 0;
   right: 0;
   background-color: var(--color-bg-white);
-  border-radius: var(--radius-md);
+  border-radius: 2px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   max-height: 70vh;
   overflow-y: auto;
   z-index: 1000;
+
+  &::after {
+    content: '';
+    position: sticky;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    pointer-events: none;
+    margin-top: -80px;
+  }
 `;
 
 const SearchWrapper = styled.div`

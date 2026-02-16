@@ -4,14 +4,14 @@ import { Search, X } from "lucide-react";
 const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  background-color: var(--color-bg-gray);
-  border-radius: var(--radius-lg);
+  background-color: #e3e3e3;
+  border-radius: 2px;
   padding: var(--spacing-sm) var(--spacing-lg);
   gap: var(--spacing-sm);
   transition: background-color 0.2s ease;
 
   &:focus-within {
-    background-color: var(--color-bg-gray-hover);
+    background-color: #d4d4d4;
   }
 `;
 

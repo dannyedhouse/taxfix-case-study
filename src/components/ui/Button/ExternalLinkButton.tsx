@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { ExternalLink } from "lucide-react";
 
-const StyledAmazonButton = styled.a`
+const StyledButton = styled.a`
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-xs);
   padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: #ff9900;
-  color: #000000;
+  background-color: var(--color-dark-green);
+  color: var(--color-bg-white);
   text-decoration: none;
   border-radius: var(--radius-md);
   font-size: 14px;
@@ -15,35 +15,25 @@ const StyledAmazonButton = styled.a`
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #f59000;
+    background-color: #0d2e0f;
     transform: translateY(-1px);
-  }
-
-  &:active {
-    background-color: #e88b00;
   }
 `;
 
-interface AmazonButtonProps {
+interface ExternalLinkButtonProps {
   href: string;
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export const AmazonButton = ({
-  href,
-  onClick,
-  children,
-}: AmazonButtonProps) => {
+export const ExternalLinkButton = ({ href, children }: ExternalLinkButtonProps) => {
   return (
-    <StyledAmazonButton
+    <StyledButton
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={onClick}
     >
       <ExternalLink size={16} />
-      {children || "Search on Amazon"}
-    </StyledAmazonButton>
+      {children}
+    </StyledButton>
   );
 };

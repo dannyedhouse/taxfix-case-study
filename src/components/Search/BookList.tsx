@@ -1,48 +1,46 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import type { Book } from "../../services/Books";
 import { BookSkeletonList } from "./BookSkeleton";
 import { generateAmazonSearchUrl } from "../../utils/generateAmazonLink";
 import { AmazonButton } from "../ui/AmazonButton/AmazonButton";
+import { BookCover } from "../BookCover/BookCover";
+import { useAppDispatch } from "../../store/hooks";
+import { clearSearchQuery } from "../../store/slices/searchSlice";
 
 const ListContainer = styled.div`
   width: 100%;
   padding: var(--spacing-xs);
 `;
 
-const BookItem = styled.div`
+const BookItem = styled(Link)`
   display: flex;
   gap: var(--spacing-md);
   padding: var(--spacing-md);
   background-color: var(--color-bg-white);
   transition: background-color 0.2s ease;
   border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 
   &:hover {
-    background-color: var(--color-bg-gray-light);
+    background-color: #e3e3e3;
   }
 
   &:not(:last-child) {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 18px;
   }
 
   &:focus-visible {
     outline: 2px solid var(--color-dark-green);
     outline-offset: -2px;
-    background-color: var(--color-bg-gray-light);
+    background-color: #e3e3e3;
   }
-`;
 
-const BookCover = styled.div`
-  width: 80px;
-  height: 120px;
-  flex-shrink: 0;
-  background-color: var(--color-bg-skeleton);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-tertiary);
-  font-size: 11px;
+  @media (max-width: 768px) {
+    gap: var(--spacing-sm);
+  }
 `;
 
 const BookInfo = styled.div`
@@ -56,7 +54,7 @@ const BookInfo = styled.div`
 const BookTextContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 `;
 
 const BookTitle = styled.h3`
@@ -105,6 +103,12 @@ export const BookList = ({
   isError,
   searchQuery,
 }: BookListProps) => {
+  const dispatch = useAppDispatch();
+
+  const handleBookClick = () => {
+    dispatch(clearSearchQuery());
+  };
+
   if (isLoading) {
     return (
       <ListContainer>
@@ -117,7 +121,7 @@ export const BookList = ({
     return (
       <ListContainer>
         <ErrorState>
-          Sorry, there was an error loading the books. Please try again.
+          Error loading books. Please try again.
         </ErrorState>
       </ListContainer>
     );
@@ -138,26 +142,44 @@ export const BookList = ({
 
   return (
     <ListContainer>
-      {books.map((book) => (
-        <BookItem key={book.key} role="option" tabIndex={0}>
-          <BookCover>No Cover</BookCover>
-          <BookInfo>
-            <BookTextContent>
-              <BookTitle>{book.title}</BookTitle>
-              {book.author_name && book.author_name.length > 0 && (
-                <BookAuthor>Author: {book.author_name.join(", ")}</BookAuthor>
-              )}
-              {book.first_publish_year && (
-                <BookDetails>First published: {book.first_publish_year}</BookDetails>
-              )}
-            </BookTextContent>
-            <AmazonButton
-              href={generateAmazonSearchUrl(book)}
-              onClick={(e) => e.stopPropagation()}
+      {books.map((book) => {
+        const workId = book.key.split("/").pop();
+
+        return (
+          <BookItem
+            key={book.key}
+            to={`/book/${workId}`}
+            role="option"
+            tabIndex={0}
+            onClick={handleBookClick}
+          >
+            <BookCover
+              coverId={book.cover_i}
+              title={book.title}
+              width="80px"
+              height="120px"
+              iconSize={24}
             />
-          </BookInfo>
-        </BookItem>
-      ))}
+            <BookInfo>
+              <BookTextContent>
+                <BookTitle>{book.title}</BookTitle>
+                {book.author_name && book.author_name.length > 0 && (
+                  <BookAuthor>Author: {book.author_name.join(", ")}</BookAuthor>
+                )}
+                {book.first_publish_year && (
+                  <BookDetails>
+                    First published: {book.first_publish_year}
+                  </BookDetails>
+                )}
+              </BookTextContent>
+              <AmazonButton
+                href={generateAmazonSearchUrl(book)}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </BookInfo>
+          </BookItem>
+        );
+      })}
     </ListContainer>
   );
 };
