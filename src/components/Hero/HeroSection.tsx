@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { InfoIcon } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/Button/Button";
 
 const AnnouncementBanner = styled.div`
@@ -122,8 +121,6 @@ const Subtitle = styled.p`
 `;
 
 export const HeroSection = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <AnnouncementBanner>
@@ -142,9 +139,7 @@ export const HeroSection = () => {
               no-referraltarget="_blank"
               rel="noopener noreferrer"
             >
-              <Button onClick={() => navigate("taxfix.com")}>
-                Find out more
-              </Button>
+              <Button>Find out more</Button>
             </a>
           </ContentSection>
           <ImageSection>
