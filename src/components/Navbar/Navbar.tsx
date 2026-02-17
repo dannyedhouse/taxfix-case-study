@@ -19,7 +19,11 @@ const NavbarContainer = styled.nav`
   isolation: isolate;
 
   @media (max-width: 768px) {
+    flex-wrap: wrap;
+    height: auto;
     padding: var(--spacing-md) var(--spacing-2xl);
+    justify-content: center;
+    gap: var(--spacing-md);
   }
 `;
 
@@ -32,6 +36,24 @@ const LogoWrapper = styled.div`
   &:hover {
     opacity: 0.8;
   }
+
+  @media (max-width: 768px) {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+`;
+
+const SearchWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    order: 2;
+    width: 100%;
+    justify-content: stretch;
+  }
 `;
 
 export const Navbar = () => {
@@ -40,7 +62,9 @@ export const Navbar = () => {
       <LogoWrapper>
         <Logo />
       </LogoWrapper>
-      <Search />
+      <SearchWrapper>
+        <Search />
+      </SearchWrapper>
     </NavbarContainer>
   );
 };

@@ -11,6 +11,10 @@ const Overlay = styled.div`
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 50;
+
+  @media (max-width: 768px) {
+    top: 130px;
+  }
 `;
 
 const DropdownContainer = styled.div`
@@ -49,7 +53,7 @@ const SearchWrapper = styled.div`
   flex: 1;
 
   @media (max-width: 768px) {
-    max-width: 250px;
+    max-width: 100%;
   }
 `;
 
