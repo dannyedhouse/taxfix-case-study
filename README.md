@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# Taxfix Take Home Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A book search application built with React that integrates with the Open Library API to search books and display detailed information.
 
-Currently, two official plugins are available:
+Uses - https://openlibrary.org/developers/api
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## React Compiler
+- Install dependencies: `pnpm i`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Start development server: `pnpm run dev`
 
-## Expanding the ESLint configuration
+- Build for production: `pnpm build`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Main Dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+- **Redux Toolkit** - State management and RTK Query for API calls
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React Router** - For client-side routing
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+- **styled-components** - CSS-in-JS styling solution
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Lucide React** - Icon library
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## Decisions
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+**Architecture**
+
+- Created a useSearch hook to encapsulate searching logic
+
+- Created a data processing utilities to keep components clean
+
+**Performance**
+
+- Debounced search input for 300ms to minimize API calls
+
+- Skeleton loaders for better perceived performance (and loading spinner for book covers)
+
+- Limit search results to 10 to prevent expensive calls
+
+- RTK Query caching of 5 minutes
+
+**UX/Accessibility**
+
+- Focus trap in search results dropdown with ability to exit with escape key, clicking outside
+
+- Overlay darkens content when search is active
+
+**Styling**
+
+- CSS variables for consistent theming
+
+- Mobile-responsive design with media queries
+
+---
+
+## Future Improvements
+
+- Tests! with Vitest, e.g. mocking book list results.
+
+- Add pagination for search results (currently limited to 10)
+
+- Add favorites/bookmark functionality with local storage
+
+- Perhaps extract styling into seperate files to keep components smaller, and look into theming.
